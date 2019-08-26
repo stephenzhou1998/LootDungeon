@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 1989581852089873174}
   - component: {fileID: 6558571086044170258}
   - component: {fileID: 4453920115630961619}
+  - component: {fileID: 1688101813149350518}
   - component: {fileID: 1569539347318460151}
+  - component: {fileID: 2149147544936603384}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -68,8 +70,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9e7a46fec7f52d04b830fb306ab7e1bc, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -110,7 +112,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6992227690880893638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cfa4f89cb25f0c44a79bebadc3795b4, type: 3}
+  m_Script: {fileID: 11500000, guid: d74b25e933448ce4da6930d970bb0722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1688101813149350518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992227690880893638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047c246b21d9cbf42a85577f21eb3b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 
@@ -131,7 +145,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 4453920115630961619}
+        - m_Target: {fileID: 1688101813149350518}
           m_MethodName: OnMouseEnter
           m_Mode: 1
           m_Arguments:
@@ -148,7 +162,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 4453920115630961619}
+        - m_Target: {fileID: 1688101813149350518}
           m_MethodName: OnMouseExit
           m_Mode: 1
           m_Arguments:
@@ -162,3 +176,16 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &2149147544936603384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992227690880893638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047c246b21d9cbf42a85577f21eb3b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 

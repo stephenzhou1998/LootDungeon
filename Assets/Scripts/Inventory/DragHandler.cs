@@ -8,12 +8,24 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public static GameObject itemBeingDragged;
     Vector3 startPosition;
     Transform startParent;
+    Transform last;
+
+    void Start()
+    {
+        last = GameObject.Find("InventoryCanvas").transform.Find("Inventory").Find("Last");
+    }
+
+    public Transform getStartParent()
+    {
+        return startParent;
+    }
 
     public void OnBeginDrag (PointerEventData eventData)
     {
         itemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
+        transform.SetParent(last);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
@@ -26,9 +38,10 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-        if (transform.parent == startParent)
+        if (transform.parent == last)
         {
-            transform.position = startPosition; 
+            transform.position = startPosition;
+            transform.SetParent(startParent);
         }
     }
 }

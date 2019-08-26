@@ -3,10 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
     public string type;
+    private GameObject inventory;
+
+    void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        inventory = GameObject.Find("InventoryCanvas").transform.Find("Inventory").gameObject;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        inventory = GameObject.Find("InventoryCanvas").transform.Find("Inventory").gameObject;
+    }
+
     public GameObject item
     {
         get
@@ -21,10 +35,24 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop (PointerEventData eventData)
     {
-        // Only put item in slot if it's empty and it's an inventory slot or its equipment slot type matches the item's type.
-        if (!item && (type.Equals("Inventory") || type.Equals(DragHandler.itemBeingDragged.GetComponent<Item>().type)))
+        if (DragHandler.itemBeingDragged == null)
         {
-            Transform t = DragHandler.itemBeingDragged.transform;
+            return;
+        }
+        Transform t = DragHandler.itemBeingDragged.transform;
+        if (t.GetComponent<DragHandler>().getStartParent().GetComponent<ItemSlot>().type.Equals("Shop"))
+        {
+            return;
+        }
+        // Only put item in slot if it's an inventory slot or its equipment slot type matches the item's type.
+        if (type.Equals("Inventory") || type.Equals(t.GetComponent<Item>().type))
+        {
+            if (item)
+            {
+                // If there's already an item in this slot, put it in the slot the dropped item was from.
+                Transform p = t.gameObject.GetComponent<DragHandler>().getStartParent();
+                item.transform.SetParent(p);
+            }
             t.SetParent(transform);
             RectTransform rt = t.GetComponent<RectTransform>();
             RectTransform prt = transform.GetComponent<RectTransform>();
@@ -36,19 +64,26 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     public void OnMouseEnter ()
     {
-        Debug.Log("mouse enter");
         if (!item)
         {
-            transform.GetComponentInParent<Inventory>().descriptionText.text = "Empty";
+            // transform.GetComponentInParent<Inventory>().descriptionText.text = "Empty";
         } else
         {
-            transform.GetComponentInParent<Inventory>().descriptionText.text = item.GetComponent<Item>().description;
+            Inventory inv = inventory.GetComponent<Inventory>();
+            Item it = item.GetComponent<Item>();
+            inv.descriptionText.text = it.description;
+            inv.itemName.text = it.itemName;
+            inv.itemValue.text = "Value: " + it.value.ToString();
+            inv.itemScaling.text = it.scaling;
         }
     }
 
     public void OnMouseExit ()
     {
-        Debug.Log("mouse exit");
-        transform.GetComponentInParent<Inventory>().descriptionText.text = "";
+        Inventory inv = inventory.GetComponent<Inventory>();
+        inv.descriptionText.text = "";
+        inv.itemName.text = "";
+        inv.itemValue.text = "";
+        inv.itemScaling.text = "";
     }
 }

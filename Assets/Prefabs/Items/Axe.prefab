@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c8681909082016b4186ba3f586e26f17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 199a90aa314a98d4fa6acd28eef8370e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8516204248669385184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43f3bca614dc3e4788eed6d17c273a8, type: 3}
+  m_Script: {fileID: 11500000, guid: d74b25e933448ce4da6930d970bb0722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6380769924209944851
@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: Weapon
-  description: +25 damage
+  itemName: Axe
+  description: '* +25 damage'
   additionalDamage: 25
   attackSpeedMultiplier: 1

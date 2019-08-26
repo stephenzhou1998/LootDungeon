@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,12 +8,13 @@ public class Inventory : MonoBehaviour, IHasChanged
 {
     public Item[] inventory;
     public Item[] equipment;
-    public GameObject itemTemplate;
     public GameObject player;
     [SerializeField] Transform equipmentSlots;
     [SerializeField] Transform inventorySlots;
-    [SerializeField] Text equipmentText;
     public Text descriptionText;
+    public Text itemName;
+    public Text itemValue;
+    public Text itemScaling;
 
     void Start ()
     {
@@ -37,7 +38,12 @@ public class Inventory : MonoBehaviour, IHasChanged
                 {
                     // Equipping this item, calling relevant methods in Player.
                     equipment[i] = eq;
-                    player.GetComponent<Player>().equip(eq);
+                    player.GetComponent<Player>().Equip(eq);
+                } else if (equipment[i] != eq)
+                {
+                    player.GetComponent<Player>().Unequip(equipment[i]);
+                    equipment[i] = eq;
+                    player.GetComponent<Player>().Equip(eq);
                 }
                 builder.Append(item.name);
                 builder.Append(" - ");
@@ -45,7 +51,7 @@ public class Inventory : MonoBehaviour, IHasChanged
             {
                 if (equipment[i])
                 {
-                    player.GetComponent<Player>().unequip(equipment[i]);
+                    player.GetComponent<Player>().Unequip(equipment[i]);
                 }
                 equipment[i] = null;
             }
@@ -55,7 +61,7 @@ public class Inventory : MonoBehaviour, IHasChanged
         {
             builder.Remove(builder.Length - 3, 3);
         }
-        equipmentText.text = builder.ToString();
+        // equipmentText.text = builder.ToString();
         i = 0;
         foreach (Transform slotTransform in inventorySlots)
         {
@@ -81,16 +87,28 @@ public class Inventory : MonoBehaviour, IHasChanged
             GameObject item = slotTransform.GetComponent<ItemSlot>().item;
             if (!item)
             {
-                inventory[i] = itemToAdd;
-                Instantiate(itemTemplate, slotTransform);
-                GameObject newItem = slotTransform.GetComponent<ItemSlot>().item;
-                Image newImage = newItem.GetComponent<Image>();
-                newImage.sprite = itemToAdd.GetComponent<Image>().sprite;
-                newImage.color = itemToAdd.GetComponent<Image>().color;
+                Instantiate(itemToAdd, slotTransform);
+                //GameObject newItem = slotTransform.GetComponent<ItemSlot>().item;
+                //Image newImage = newItem.GetComponent<Image>();
+                //newImage.sprite = itemToAdd.GetComponent<Image>().sprite;
+                //newImage.color = itemToAdd.GetComponent<Image>().color;
                 return;
             }
             i++;
         }
+    }
+
+    public Transform getNextEmpty()
+    {
+        foreach (Transform slotTransform in inventorySlots)
+        {
+            GameObject item = slotTransform.GetComponent<ItemSlot>().item;
+            if (!item)
+            {
+                return slotTransform;
+            }
+        }
+        return null;
     }
 
     // Remove an item from inventory slots.

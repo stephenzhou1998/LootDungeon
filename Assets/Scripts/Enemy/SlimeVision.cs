@@ -24,7 +24,6 @@ public class SlimeVision : MonoBehaviour
     {
         if (collider.gameObject.name == "Player")
         {
-            Debug.Log("Triggered!");
             if (!stalking)
             {
                 stalking = true;
@@ -37,7 +36,6 @@ public class SlimeVision : MonoBehaviour
     {
         if (collider.gameObject.name == "Player")
         {
-            Debug.Log("Calmed!");
             stalking = false;
         }
     }

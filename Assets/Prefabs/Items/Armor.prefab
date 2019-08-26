@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 05e19975423bdd641a669f53173cc470, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cacf0782c4059845bd9ef488b7580d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4007258260456858983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43f3bca614dc3e4788eed6d17c273a8, type: 3}
+  m_Script: {fileID: 11500000, guid: d74b25e933448ce4da6930d970bb0722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1818903380498333072
@@ -114,5 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: Armor
-  description: +25 max health
+  itemName: Armor
+  description: '* +25 max health'
   additionalHealth: 25

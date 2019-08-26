@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ad28b80039d66964d83a01a0030f69bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c9747492130b8747ae24807983a7c3c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8933460170949837876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43f3bca614dc3e4788eed6d17c273a8, type: 3}
+  m_Script: {fileID: 11500000, guid: d74b25e933448ce4da6930d970bb0722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6149850444698688707
@@ -114,6 +114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: Weapon
-  description: +10 damage, x2 attack speed
+  itemName: Sword
+  description: '* +10 damage
+
+    * x2 attack speed'
   additionalDamage: 10
   attackSpeedMultiplier: 2
